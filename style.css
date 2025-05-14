@@ -29,23 +29,22 @@
   nav img {
     width: 150px;
   }
-  
-  .nav-links {
+    .nav-links {
     flex: 1;
     text-align: left;
-    /* align-items:center; */
     transition: 0.5s;
-    position: absolute;
-    right: -200px;
+    position: fixed;
+    right: -100%;
     top: 0;
     background: #f44336;
     height: 100vh;
     width: 200px;
-    z-index: 2;
+    z-index: 999;
     display: flex;
     flex-direction: column;
     padding-top: 20px;
     padding-left: 25px;
+    overflow-x: hidden;
   }
   
   .nav-links ul {
@@ -114,8 +113,7 @@
     font-size: 14px;
     color: #fff;
   }
-  
-  .hero-btn {
+    .hero-btn {
     display: inline-block;
     text-decoration: none;
     color: #fff;
@@ -125,12 +123,36 @@
     background: transparent;
     position: relative;
     cursor: pointer;
+    transition: 0.4s;
+  }
+    .hero-btn::before,
+  .hero-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
+
+  .hero-btn::before {
+    left: -25px;
+  }
+
+  .hero-btn::after {
+    right: -25px;
   }
   
   .hero-btn:hover {
     background: #f44336;
     border-color: #f44336;
-    transition: 0.4s;
+  }
+
+  .hero-btn:hover::before,
+  .hero-btn:hover::after {
+    width: 50px;
   }
   
   .course, .campus, .facilities, .testimonials, .cta, .footer {
@@ -279,8 +301,7 @@
   
   
   /* Responsive */
-  
-  @media (min-width: 768px) {
+    @media (min-width: 768px) {
     .nav-links {
       position: static;
       height: auto;
@@ -302,6 +323,34 @@
     nav .fa-bars {
       display: none;
     }
+  }
+
+  @media (max-width: 768px) {
+    .text-box h1 {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    nav img{
+      padding-top: 17px;
+    }
+  
+    .hero-btn {
+      padding: 10px 20px;
+      font-size: 12px;
+    }
+  
+    .course-col, .campus-col, .facilities-col, .testimonial-col {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  
+    .course h1, .campus h1, .facilities h1, .testimonials h1, .cta h1 {
+      font-size: 28px;
+    }
+    
   }
   /* Sub Header */
 .sub-header {
